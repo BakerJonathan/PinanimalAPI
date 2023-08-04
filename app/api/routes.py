@@ -26,7 +26,7 @@ def add_url(user_id):
 # Same with the post methods
 @api.route('/myimg/getbyuserid/<a_user>', methods=['GET'])
 def get_urls(a_user):
-    uis=UserImages.query.filter_by(user_id=a_user).all()
+    uis=UserImages.query.filter_by(user_id=a_user).order_by(UserImages.prio.asc()).all()
     response=uIm_schemas.dump(uis)
     return jsonify(response)
 
